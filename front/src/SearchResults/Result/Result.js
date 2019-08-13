@@ -10,6 +10,7 @@ const Result = props => {
         <p className='listing-location'>{props.location}</p>
       </body>
     </li>
+    
   )
 }
 

@@ -2,7 +2,18 @@
   display: flex;
   padding: 1em;
   border-radius: 3px;
-  max-width: 50em;
+  width: 100%;
+  background-color: #f9fcf8;
+  border-radius: 4px;
+  margin: 12px;
+  border: 1px solid #f9fcf8;
+}
+.results-container:hover {
+  transition: all 0.2s ease-out;
+  box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+  top: -4px;
+  border: 1px solid #f9fcf8;
+  background-color: #fdfefd;
 }
 
 .listing-image {
@@ -11,8 +22,14 @@
 
 .listing-body {
   flex: 2;
+  text-align: left;
+  margin-left: 12px;
 }
 
 .listing-location {
   margin: 0 0 0.5em;
+}
+
+h3 {
+  color: grey;
 }

@@ -1,11 +1,14 @@
 import React from "react"
 
-const NoResults = props => {
-  return (
-    <li className='no-results'>
-      <h3>Sorry, no results were found.</h3>
-    </li>
-  )
-}
+const NoResult = props => {
 
-export default NoResults
+    return (
+      <li className='no-results'>
+        <img
+          src='https://media.giphy.com/media/2t9mb0HwTVn3mHj8AZ/giphy.gif'
+          alt='lost-gif'
+        />
+      </li>
+    )
+  }
+export default NoResult
