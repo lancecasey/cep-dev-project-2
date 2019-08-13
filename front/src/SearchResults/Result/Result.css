@@ -1,0 +1,18 @@
+.results-container {
+  display: flex;
+  padding: 1em;
+  border-radius: 3px;
+  max-width: 50em;
+}
+
+.listing-image {
+  flex: 1;
+}
+
+.listing-body {
+  flex: 2;
+}
+
+.listing-location {
+  margin: 0 0 0.5em;
+}
