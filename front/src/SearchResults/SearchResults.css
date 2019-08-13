@@ -1,0 +1,6 @@
+.results_container {
+  list-style: none;
+  max-width: 800px;
+  margin: auto;
+  width: 50%;
+}
