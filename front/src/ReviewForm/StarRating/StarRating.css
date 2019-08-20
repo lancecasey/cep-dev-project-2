@@ -1,0 +1,41 @@
+.review--stars {
+  border: 0;
+  margin: 20px 0 0;
+  padding: 0;
+  font-size: 100%;
+  
+}
+
+.review--stars li {
+  float: left;
+  list-style: none;
+  width: 20%;
+  max-width: 40px;
+  line-height: 0;
+  margin-bottom: 10px;
+  text-align: center;
+  padding: 0 5px;
+  box-sizing: border-box;
+}
+
+.review--stars li:first-child {
+  margin-left: -2px;
+}
+
+.review--stars li:hover {
+  cursor: pointer;
+}
+
+.review--stars .star {
+  width: auto;
+  height: 100%;
+  fill: #ABABAB;
+}
+
+.review--stars .selected .star {
+  fill: #FFD700;
+}
+
+.review--stars--form .review--stars {
+  margin-bottom: 10px;
+}
