@@ -1,0 +1,29 @@
+.review-form {
+  max-width: 800px;
+  margin: auto;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+.review-stars {
+    justify-content: center;
+}
+
+
+input[type="text"] {
+  width: 100%;
+  max-width: 400px;
+  align-self: center;
+}
+
+input[type="textarea"] {
+  width: 100%;
+  max-width: 400px;
+  min-height: 75px;
+}
+
+input[type="submit"] {
+  width: 100%;
+  max-width: 400px;
+  align-self: center;
+}

@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import Input from "./Input"
+import "./styles.css"
 import StarRating from "./StarRating/StarRating"
 
 class ReviewForm extends Component {
@@ -18,10 +19,14 @@ class ReviewForm extends Component {
         this.state.stars
       } stars.`
     )
+    console.log(this.state)
     e.preventDefault()
+    this.setState({
+      name: "",
+      message: "",
+      stars: 0
+    })
   }
-
-  handleResetForm = e => {}
 
   handleInput = e => {
     let value = e.target.value
@@ -55,33 +60,29 @@ class ReviewForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          {/*stars component*/}
-          <StarRating
-            name={"stars"}
-            value={this.state.stars}
-            handleChange={this.handleSetRating}
-          />
-          {/*name input*/}
-          <Input
-            type={"text"}
-            title={"Name"}
-            name={"name"}
-            value={this.state.name}
-            placeholder={"Enter your name"}
-            handleChange={this.handleInput}
-          />
-          {/*message input*/}
-          <Input
-            type={"textarea"}
-            title={"Message"}
-            name={"message"}
-            value={this.state.message}
-            placeholder={"How was your stay?"}
-            handleChange={this.handleInput}
-          />
-        </label>
+      <form className='review-form' onSubmit={this.handleSubmit}>
+        {/*stars component*/}
+        <StarRating
+          name={"stars"}
+          value={this.state.stars}
+          handleChange={this.handleSetRating}
+        />
+        {/*name input*/}
+        <Input
+          type={"text"}
+          name={"name"}
+          value={this.state.name}
+          placeholder={"Enter your name"}
+          handleChange={this.handleInput}
+        />
+        {/*message input*/}
+        <Input
+          type={"textarea"}
+          name={"message"}
+          value={this.state.message}
+          placeholder={"How was your stay?"}
+          handleChange={this.handleInput}
+        />
         <input type='submit' value='Submit' />
       </form>
     )
