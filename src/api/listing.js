@@ -1,10 +1,11 @@
-const {Listing} = require('./../models/listing.js');
+const Listing = require('./../models/listing.js');
 const Boom = require('boom');
 
 const listingApi = {
   all: {
     async handler(request, h) {
       try {
+        console.log("Attempting to find the information");
         return await Listing.find({}).sort({ createdAt: 'desc' });
       } catch(err) {
         Boom.badImplementation(err);
@@ -15,7 +16,7 @@ const listingApi = {
     async handler(request, h) {
       try {
         const listing = request.params.listing;
-        return await Listing.findOnr({ _id: listing.id });
+        return await Listing.findOne({ location: listing.location });
       } catch(err) {
         Boom.badImplementation(err);
       }
@@ -24,6 +25,7 @@ const listingApi = {
   create: {
     async handler(request, h) {
       try {
+        console.log(request.payload);
         const listing = await new Listing({
           title: request.payload.title,
           description: request.payload.description,

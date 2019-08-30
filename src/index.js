@@ -24,6 +24,7 @@ const server = Hapi.server({
 const startServer = async () => {
   try {
     routes.forEach((route) => {
+      console.dir(route, {depth: null});
       server.route(route);
     });
 
@@ -36,10 +37,10 @@ const startServer = async () => {
   }
 };
 
-process.on('unhandledRejection', (err) => {
-  console.log(err);
-  process.exit(1);
-});
+// process.on('unhandledRejection', (err) => {
+//   console.log(err);
+//   process.exit(1);
+// });
 
 startServer();
 
