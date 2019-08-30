@@ -1,4 +1,4 @@
-const {Review} = require('./../models/review.js');
+const Review = require('./../models/review.js');
 const Boom = require('boom');
 
 const reviewApi = {
@@ -15,7 +15,7 @@ const reviewApi = {
     async handler(request, h) {
       try {
         const review = request.params.review;
-        return await Review.findOnr({ _id: review.id });
+        return await Review.findOne({ _id: review.id });
       } catch(err) {
         Boom.badImplementation(err);
       }
