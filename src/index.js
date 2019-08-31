@@ -5,7 +5,7 @@ const routes = require('./routes.js');
 require('./data/database');
 
 const server = Hapi.server({
-  port: 3000,
+  port: 8000,
   host: 'localhost',
   // host: 'https://github.com/ljc3/cep-dev-project-2',
   routes: { cors: true }
@@ -23,6 +23,7 @@ const server = Hapi.server({
 
 const startServer = async () => {
   try {
+
     routes.forEach((route) => {
       console.dir(route, {depth: null});
       server.route(route);

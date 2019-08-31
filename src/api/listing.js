@@ -1,5 +1,17 @@
 const Listing = require('./../models/listing.js');
 const Boom = require('boom');
+const fs = require('fs');
+
+const handleFileUpload = file => {
+  return new Promise((resolve, reject) => {
+    fs.writeFile('./upload/test.jpg', file, err => {
+      if(err){
+        reject(err);
+      }
+      resolve({ message: 'File successfully uploaded '});
+    });
+  });
+}
 
 const listingApi = {
   all: {
@@ -26,10 +38,14 @@ const listingApi = {
     async handler(request, h) {
       try {
         console.log(request.payload);
+        console.log(request.payload.image);
         const listing = await new Listing({
           title: request.payload.title,
           description: request.payload.description,
-          image: request.payload.image,
+          image: {
+            data: handleFileUpload(request.payload.image),
+            contentType: 'image/png'
+          },
           city: request.payload.city
         });
         listing.save();

@@ -4,7 +4,7 @@ const listingModel = mongoose.Schema(
   {
   title: {type: String, required: '{PATH} is required'},
   description: String,
-  image: String,
+  image: { data: Buffer, contentType: String },
   city: String
 }, 
 {
