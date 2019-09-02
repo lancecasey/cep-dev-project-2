@@ -22,21 +22,30 @@ class Search extends Component {
         term = term.toLowerCase();
         //initialize empty array to push results into
         let newState = [];
-        let listingsArr = [];
-        console.log(res);
-        listingsArr.push(res);
+        let listingsArr = res;
 //        map over array object
         listingsArr.map(listing => {
             //grab the location for searching
+            console.log(listing);
             let location = listing.city;
             //lower case for comparison
             location = location.toLowerCase();
+            function _arrayBufferToBase64( buffer ) {
+                var binary = '';
+                var bytes = new Uint8Array( buffer );
+                var len = bytes.byteLength;
+                for (var i = 0; i < len; i++) {
+                    binary += String.fromCharCode( bytes[ i ] );
+                }
+                return window.btoa( binary );
+            }
             //compare that bitch and check for common letters/substring!
             if(location.indexOf(term, 0) !== -1 && term.length > 0){
                 //if found, create a new object out of the array information
+                let imageSource = listing.image.data.data;
                 let newListing = {
                     id: listing.id,
-                    imgSrc: listing.image,
+                    imgSrc: "data:image/png;base64," + _arrayBufferToBase64(imageSource),
                     listingHeadline: listing.title,
                     listingLocation: listing.city
                 }
@@ -44,7 +53,7 @@ class Search extends Component {
                 newState.push(newListing);
             }            
         });  
-        console.log(res);
+        console.log(newState);
         return this.setState({listings: newState});         
         },
         (error) => {
