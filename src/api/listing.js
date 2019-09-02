@@ -4,12 +4,18 @@ const fs = require('fs');
 
 const handleFileUpload = file => {
   return new Promise((resolve, reject) => {
-    fs.writeFile('./upload/test.jpg', file, err => {
+    const filename = file.hapi.filename;
+    const data = file._data
+    fs.writeFile('./upload/' + filename, data, err => {
       if(err){
+        console.error("This is the error!!!!");
         reject(err);
       }
-      resolve({ message: 'File successfully uploaded '});
+      resolve(data);
+      return filename;
     });
+  }).catch(err => {
+    console.log(err);
   });
 }
 
@@ -37,13 +43,12 @@ const listingApi = {
   create: {
     async handler(request, h) {
       try {
-        console.log(request.payload);
         console.log(request.payload.image);
         const listing = await new Listing({
           title: request.payload.title,
           description: request.payload.description,
           image: {
-            data: handleFileUpload(request.payload.image),
+            data: await handleFileUpload(request.payload.image),
             contentType: 'image/png'
           },
           city: request.payload.city
@@ -54,6 +59,12 @@ const listingApi = {
       } catch(err) {
         Boom.badImplementation(err);
       }
+    },
+    payload: {
+        output: "stream",
+        parse: true,
+        allow: "multipart/form-data",
+        maxBytes: 2 * 1000 * 1000      
     }
   },
   update: {

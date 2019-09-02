@@ -16,7 +16,7 @@ const routes = [
   {
     method: 'POST',
     path: '/api/listings',
-    options: listing.create
+    options: listing.create    
   },
   {  
     method: 'PUT',
