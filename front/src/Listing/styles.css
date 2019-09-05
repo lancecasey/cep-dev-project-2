@@ -1,11 +1,10 @@
 .grid-container {
   display: grid;
   grid-template-areas:
-    "header header header header header header"
-    "main main main main right right"
-    "footer footer footer footer footer footer";
+    "header"
+    "main"
+    "footer";
   grid-gap: 10px;
-  background-color: #2196f3;
   padding: 10px;
 }
 
@@ -19,10 +18,7 @@
   grid-area: header;
   object-fit: cover;
 }
-.main {
-  grid-area: main;
-  text-align: left;
-}
+
 h1 {
   padding: 10px;
   text-align: left;
@@ -35,11 +31,27 @@ p {
   padding: 10px;
   text-align: left;
 }
+.meat {
+  display: flex;
+  flex-direction: row;
+  grid-area: main;
+  flex-wrap: wrap;
+}
+.main {
+  flex: 1;
+  text-align: left;
+  padding: 10px;
+  min-width: 400px;
+}
 .amenities {
-  grid-area: right;
+  flex: 1;
   padding: 10px;
   text-align: left;
+  min-width: 400px;
 }
 .review {
   grid-area: footer;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
 }
