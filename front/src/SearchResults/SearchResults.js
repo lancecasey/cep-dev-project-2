@@ -6,8 +6,14 @@ import "./SearchResults.css"
 export default class SearchResults extends Component {
   constructor(props){
     super(props);
+
+    this.handleListingClick = this.handleListingClick.bind(this);
+    
+
   }
-  
+  handleListingClick = (event) => {
+    console.log(event);
+}
 
   render() {
     let listingResults
@@ -20,6 +26,7 @@ export default class SearchResults extends Component {
           src={listing.imgSrc}
           headline={listing.listingHeadline}
           location={listing.listingLocation}
+          onClick={this.handleListingClick}
         />
       ))
     }

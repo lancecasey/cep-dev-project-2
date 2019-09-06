@@ -14,9 +14,9 @@ const Listing = props => {
           <img src='https://placekitten.com/800/480' />
         </div>
         <div class='main'>
-          <h1>(property title from props)</h1>
-          <h3>(property location from props)</h3>
-          <p>(property desctipion from props)</p>
+          <h1>{props.headline}</h1>
+          <h3>{props.location}</h3>
+          <p>{props.description}</p>
         </div>
         <div class='amenities'>
           (insert amenities component)

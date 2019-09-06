@@ -10,15 +10,13 @@ class Search extends Component {
     };
     
     handleChange = (event) => {
-        console.log(event.target.value);
         return this.setState({value: event.target.value});
-      }
+    }
 
     onSearchHandler = (event) => {
         // AJAX call to get info from Mongo
         event.preventDefault();
         let term = this.state.value;
-        console.log(term);
         fetch("http://localhost:8000/api/listings", {
             mode: 'cors'
         }).then(res => res.json())
@@ -30,8 +28,8 @@ class Search extends Component {
         let listingsArr = res;
 //        map over array object
         listingsArr.map(listing => {
-            //grab the location for searching
             console.log(listing);
+            //grab the location for searching
             let location = listing.city;
             //lower case for comparison
             location = location.toLowerCase();
@@ -48,10 +46,11 @@ class Search extends Component {
                 //if found, create a new object out of the array information
                 let imageSource = listing.image.data.data;
                 let newListing = {
-                    id: listing.id,
+                    id: listing._id,
                     imgSrc: "data:image/png;base64," + _arrayBufferToBase64(imageSource),
                     listingHeadline: listing.title,
-                    listingLocation: listing.city
+                    listingLocation: listing.city,
+                    isClicked: false
                 }
                 //push it to the empty array
                 newState.push(newListing);
@@ -61,7 +60,7 @@ class Search extends Component {
         return this.setState({listings: newState});         
         },
         (error) => {
-        console.log(error);
+        console.error(error);
         }
       )        
     }
