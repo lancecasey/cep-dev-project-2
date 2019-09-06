@@ -1,6 +1,7 @@
 import React from "react"
 import ReviewForm from "../ReviewForm"
 import Header from "../Header/Header"
+import Amenities from "../Amenities"
 import "./styles.css"
 
 const Listing = props => {
@@ -11,8 +12,9 @@ const Listing = props => {
       </header>
       <div class='grid-container'>
         <div class='image'>
-          <img src='https://placekitten.com/800/480' />
+          <img src='https://placekitten.com/800/480' alt='listing' />
         </div>
+<<<<<<< HEAD
         <div class='main'>
           <h1>{props.headline}</h1>
           <h3>{props.location}</h3>
@@ -21,7 +23,24 @@ const Listing = props => {
         <div class='amenities'>
           (insert amenities component)
         </div>
+=======
+
+        <section>
+          <h1>(property title from props)</h1>
+          <div class='meat'>
+            <div class='main'>
+              <h3>(property location from props)</h3>
+              <p>(property desctipion from props)</p>
+            </div>
+            <div class='amenities'>
+              <Amenities />
+            </div>
+          </div>
+        </section>
+
+>>>>>>> 4420b18a1a2853aa486916a9fba9686fdb13c001
         <div class='review'>
+          <h4>How was your stay?</h4>
           <ReviewForm />
         </div>
       </div>
