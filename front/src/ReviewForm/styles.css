@@ -6,24 +6,26 @@
   flex-direction: column;
 }
 .review-stars {
-    justify-content: center;
+  justify-content: center;
 }
-
 
 input[type="text"] {
   width: 100%;
   max-width: 400px;
   align-self: center;
+  margin: 5px;
 }
 
 input[type="textarea"] {
   width: 100%;
   max-width: 400px;
   min-height: 75px;
+  margin: 5px;
 }
 
 input[type="submit"] {
   width: 100%;
   max-width: 400px;
   align-self: center;
+  margin: 5px;
 }
