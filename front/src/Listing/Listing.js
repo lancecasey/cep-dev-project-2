@@ -4,10 +4,23 @@ import Header from "../Header/Header"
 import Amenities from "../Amenities"
 import "./styles.css"
 
-const baseListingUri = ""
+const baseListingUri =
+  "http://localhost:8000/api/listings?id="
+  
+
+function _arrayBufferToBase64(buffer) {
+  var binary = ""
+  var bytes = new Uint8Array(buffer)
+  var len = bytes.byteLength
+  for (var i = 0; i < len; i++) {
+    binary += String.fromCharCode(bytes[i])
+  }
+  return window.btoa(binary)
+}
 class Listing extends React.Component {
   state = {
     listing: {},
+    listingImg: '',
     reviews: [],
     isLoading: false
   }
@@ -15,13 +28,16 @@ class Listing extends React.Component {
   componentDidMount() {
     this.setState({ isLoading: true })
 
-    fetch("https://reqres.in/api/users/1")
+    fetch(baseListingUri + "5d72a402987d7973255734c1") //TODO replace hardcoded id with prop
       .then(data => data.json())
       .then(data => {
         console.log(data)
         this.setState({
-          listing: data.data,
-          isLoading: false
+          listing: data[0],
+          isLoading: false,
+          listingImg:
+            "data:image/png;base64," +
+            _arrayBufferToBase64(data[0].image.data.data)
         })
       })
   }
@@ -34,15 +50,15 @@ class Listing extends React.Component {
         </header>
         <div class='grid-container'>
           <div class='image'>
-            <img src={this.state.listing.avatar} alt='listing' />
+            <img src={this.state.listingImg} alt='listing' />
           </div>
 
           <section>
-            <h1>{this.state.listing.first_name}</h1>
+            <h1>{this.state.listing.title}</h1>
             <div class='meat'>
               <div class='main'>
-                <h3>{this.state.listing.last_name}</h3>
-                <p>{this.state.listing.email}</p>
+                <h3>{this.state.listing.location}</h3>
+                <p>{this.state.listing.description}</p>
               </div>
               <div class='amenities'>
                 <Amenities />
