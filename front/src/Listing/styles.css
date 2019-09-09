@@ -18,6 +18,9 @@
   grid-area: header;
   object-fit: cover;
 }
+img {
+  max-width: 100%;
+}
 
 h1 {
   padding: 10px;
