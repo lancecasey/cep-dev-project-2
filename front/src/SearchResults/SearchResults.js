@@ -12,7 +12,8 @@ export default class SearchResults extends Component {
 
   }
   handleListingClick = (event) => {
-    console.log(event);
+    console.log(event.currentTarget.id);
+    window.open("_blank");
 }
 
   render() {
@@ -27,6 +28,7 @@ export default class SearchResults extends Component {
           headline={listing.listingHeadline}
           location={listing.listingLocation}
           onClick={this.handleListingClick}
+          id={listing.id}
         />
       ))
     }
