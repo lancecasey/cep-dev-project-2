@@ -2,10 +2,9 @@ const mongoose = require('mongoose');
 
 const reviewModel = mongoose.Schema(
   {
-  listingId: {type: Number, required: '{PATH} is required'},
-  rating: {type: String, required: '{PATH} is required'},
+  listingId: {type: String, required: '{PATH} is required'},
+  rating: {type: Number, required: '{PATH} is required'},
   review: String,
-  image: { data: Buffer, contentType: String },
   submitted: {type: Date, default: Date.now}
 }, 
 {
