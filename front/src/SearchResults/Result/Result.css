@@ -16,6 +16,7 @@
   border: 1px solid #f9fcf8;
   background-color: #fdfefd;
   transform: translate(5px);
+  cursor: pointer;
 }
 
 .listing-image {

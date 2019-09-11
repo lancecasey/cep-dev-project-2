@@ -15,7 +15,8 @@ const reviewApi = {
     async handler(request, h) {
       try {
         const review = request.params.review;
-        return await Review.findOne({ _id: review.id });
+        console.log(review);
+        return await Review.findOne({ listingId: review });
       } catch(err) {
         Boom.badImplementation(err);
       }
@@ -24,11 +25,10 @@ const reviewApi = {
   create: {
     async handler(request, h) {
       try {
-        const review = await new review({
+        const review = await new Review({
           listingId: request.payload.listingId,
           rating: request.payload.rating,
           review: request.payload.review,
-          image: request.payload.image,
           submitted: request.payload.submitted
         });
         review.save();

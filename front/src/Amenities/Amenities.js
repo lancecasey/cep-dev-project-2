@@ -6,19 +6,19 @@ import "./styles.css"
 
 const Amenities = props => {
   return (
-    <div class='container'>
+    <div className='container'>
       <h3>Things to look forward to:</h3>
-      <div class='amenity'>
-        <img class='amenity-img' src={phone} alt='phone' />
-        <p class='amenities-text'>free long distance</p>
+      <div className='amenity'>
+        <img className='amenity-img' src={phone} alt='phone' />
+        <p className='amenities-text'>free long distance</p>
       </div>
-      <div class='amenity'>
-        <img class='amenity-img' src={coffee} alt='coffee' />
-        <p class='amenities-text'>free coffee</p>
+      <div className='amenity'>
+        <img className='amenity-img' src={coffee} alt='coffee' />
+        <p className='amenities-text'>free coffee</p>
       </div>
-      <div class='amenity'>
-        <img class='amenity-img' src={beach} alt='beach' />
-        <p class='amenities-text'>walking distance to the beach</p>
+      <div className='amenity'>
+        <img className='amenity-img' src={beach} alt='beach' />
+        <p className='amenities-text'>walking distance to the beach</p>
       </div>
     </div>
   )
