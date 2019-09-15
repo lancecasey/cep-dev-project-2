@@ -5,20 +5,14 @@
   width: 50%;
 }
 
-.results_outerContainer {
-  display: flex;
-  flex-direction: row;
-  margin: 0;
-  padding: 0;
-}
-
 img {
   max-width: 200px;
 }
 
 .modal {
   display: none; 
-  position: fixed; 
+  position: fixed;
+  opacity: 0;
   z-index: 1;
   left: 5%;
   top: 20%;
@@ -41,4 +35,13 @@ img {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

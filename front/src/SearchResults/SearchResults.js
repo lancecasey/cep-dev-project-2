@@ -41,6 +41,9 @@ export default class SearchResults extends Component {
     }
 
     modalObj.style.display = "block";
+    modalObj.style.animationName = "fade-in";
+    modalObj.style.animationDuration = ".3s";
+    modalObj.style.animationFillMode = "forwards";
 
   }
 
@@ -80,7 +83,7 @@ export default class SearchResults extends Component {
       )
     }
 
-    return <section className='results_outerContainer'>
+    return <section>
               <ul className='results_container'>{listingResults}</ul>
               <div className="modal">
               <span onClick={this.modalCloser} className="close">&times;</span>
