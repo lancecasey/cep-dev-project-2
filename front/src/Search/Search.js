@@ -4,12 +4,18 @@ import "./Search.css"
 
 class Search extends Component {
   state = {
-    listings: []
-  }
+    listings: [],
+    value: ""
+};
+
+handleChange = (event) => {
+    return this.setState({value: event.target.value});
+}
 
   onSearchHandler = event => {
     // AJAX call to get info from Mongo
-    let term = event.target.value
+    event.preventDefault();
+    let term = this.state.value;
 
     fetch("http://localhost:8000/api/listings", {
       mode: "cors"
@@ -64,16 +70,11 @@ class Search extends Component {
   render() {
     return (
       <div className='searchBar_container'>
-        <input
-          className='searchBar_input'
-          placeholder='Search by Location'
-          type='text'
-          onChange={this.onSearchHandler}
-        />
 
-        <button className='searchBar_button' type='submit'>
-          SEARCH
-        </button>
+        <form id="searchForm" onSubmit={this.onSearchHandler}>
+            <input className="searchBar_input" ref="term" placeholder="Search by Location" type="text" onChange={this.handleChange} />
+            <button className="searchBar_button" form="searchForm" type="submit" >SEARCH</button>
+            </form>
         <SearchResults listings={this.state.listings} />
       </div>
     )

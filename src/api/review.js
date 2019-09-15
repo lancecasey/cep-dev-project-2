@@ -27,6 +27,7 @@ const reviewApi = {
       try {
         const review = await new Review({
           listingId: request.payload.listingId,
+          name: request.payload.name,
           rating: request.payload.rating,
           review: request.payload.review,
           submitted: request.payload.submitted

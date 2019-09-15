@@ -19,6 +19,22 @@ class ReviewForm extends Component {
         this.state.stars
       } stars.`
     )
+    
+    fetch('http://localhost:8000/api/reviews', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        listingId: this.props.id,
+        name: this.state.name,
+        review: this.state.message,
+        rating: this.state.stars
+      }),
+    });
+
     console.log(this.state)
     e.preventDefault()
     this.setState({
@@ -26,6 +42,7 @@ class ReviewForm extends Component {
       message: "",
       stars: 0
     })
+
   }
 
   handleInput = e => {
@@ -83,7 +100,7 @@ class ReviewForm extends Component {
           placeholder={"How was your stay?"}
           handleChange={this.handleInput}
         />
-        <input type='submit' value='Submit' />
+        <input type='submit' value='Submit'/>
       </form>
     )
   }

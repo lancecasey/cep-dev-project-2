@@ -72,7 +72,7 @@ class Listing extends React.Component {
 
           <div className='review'>
             <h4>How was your stay?</h4>
-            <ReviewForm />
+            <ReviewForm id={this.props.id} />
           </div>
         </div>
       </div>
