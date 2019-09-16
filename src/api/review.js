@@ -14,8 +14,9 @@ const reviewApi = {
   get: {
     async handler(request, h) {
       try {
-        const listing = request.params.listingId;
-        return await Review.find({ listingId: listing });
+        const listing = request.params;
+        console.log(listing.review);
+        return await Review.find({ listingId: listing.review });
       } catch(err) {
         Boom.badImplementation(err);
       }

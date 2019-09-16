@@ -50,6 +50,7 @@ export default class SearchResults extends Component {
   modalCloser = (event) => {
     let modalObj = document.querySelector(".modal");
     modalObj.style.display = "none";
+    this.setState({ SelectedListing: null });
   }
 
   render() {
@@ -86,8 +87,9 @@ export default class SearchResults extends Component {
     return <section>
               <ul className='results_container'>{listingResults}</ul>
               <div className="modal">
-              <span onClick={this.modalCloser} className="close">&times;</span>
-              {chosenOne}</div>
+                <span onClick={this.modalCloser} className="close">&times;</span>
+                {chosenOne}
+              </div>
           </section>
   }
 }

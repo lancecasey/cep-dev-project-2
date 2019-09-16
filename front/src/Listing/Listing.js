@@ -5,7 +5,6 @@ import Amenities from "../Amenities"
 import "./styles.css"
 import RecentReviews from "./../RecentReviews"
 
-const baseListingUri = "http://localhost:8000/api/listings?id="
 const baseReviewUri = "http://localhost:8000/api/reviews"
 
 function _arrayBufferToBase64(buffer) {
@@ -24,12 +23,7 @@ class Listing extends React.Component {
     //this.handleListingClick = this.handleListingClick.bind(this);
   }
   state = {
-    listing: {
-      listingId: "1",
-      title: "a house",
-      description: "this is a listing for a house",
-      city: "Austin, TX"
-    },
+    listing: {},
     listingImg: "",
     reviews: [],
     isLoading: false
@@ -38,20 +32,13 @@ class Listing extends React.Component {
   componentDidMount() {
     this.setState({ isLoading: true })
 
-    fetch(baseReviewUri) //TODO replace hardcoded id with prop
+    fetch(baseReviewUri + "/" + this.props.id) //TODO replace hardcoded id with prop
       .then(data => data.json())
       .then(data => {
-        console.log(data)
+        console.log("Here is the data from the fethc", data);
         let allReviews = data
-        let listingReviews = []
-        allReviews.forEach(review => {
-          if (review.listingId === this.state.listing.listingId) {
-            listingReviews.push(review)
-            console.log(listingReviews)
-          }
-        })
         this.setState({
-          reviews: listingReviews
+          reviews: allReviews
         })
       })
   }
