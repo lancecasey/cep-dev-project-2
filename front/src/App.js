@@ -1,14 +1,13 @@
 import React from 'react';
 import './App.css';
 
-import Search from './Search/Search';
-import Header from './Header/Header';
+//import Search from './Search/Search'
+import Listing from './Listing/Listing';
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Search />
+      <Listing />
     </div>
   );
 }
